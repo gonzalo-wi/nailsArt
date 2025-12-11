@@ -1,0 +1,25 @@
+package com.nailsbydeni.nails.model;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.*;
+
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name = "servicios")
+public class Servicio {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long   id;
+    private String nombre;
+    private String descripcion;
+    private double precio;
+    private int    duracion;
+
+}
