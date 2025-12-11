@@ -3,6 +3,7 @@ package com.nailsbydeni.nails.controller;
 
 import com.nailsbydeni.nails.dto.ServicioDto;
 import com.nailsbydeni.nails.service.IServicioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class ServicioController {
 
 
     @PostMapping
-    public ResponseEntity<ServicioDto> createServicio(@RequestBody ServicioDto servicioDto) {
+    public ResponseEntity<ServicioDto> createServicio(@Valid @RequestBody ServicioDto servicioDto) {
         return ResponseEntity.ok(service.save(servicioDto));
     }
 
