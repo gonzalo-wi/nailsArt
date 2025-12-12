@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -31,12 +32,13 @@ public class ServicioController {
 
     @PostMapping
     public ResponseEntity<ServicioDto> createServicio(@Valid @RequestBody ServicioDto servicioDto) {
-        return ResponseEntity.ok(service.save(servicioDto));
+        ServicioDto creado = service.save(servicioDto);
+        return ResponseEntity.created(URI.create("/api/servicios/" + creado.getId())).body(creado);
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<ServicioDto> updateServicio(@PathVariable Long id, @RequestBody ServicioDto servicioDto) {
+    public ResponseEntity<ServicioDto> updateServicio(@PathVariable Long id, @Valid @RequestBody ServicioDto servicioDto) {
         return ResponseEntity.ok(service.update(id, servicioDto));
     }
 

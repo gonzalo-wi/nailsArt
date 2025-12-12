@@ -10,15 +10,15 @@ import lombok.*;
 public class ServicioDto {
     private Long   id;
     
-    @NotBlank(message = "El nombre es obligatorio")
+    @NotBlank(message = "{servicio.nombre.obligatorio}")
     private String nombre;
     
     private String descripcion;
     
-    @Positive(message = "El precio debe ser mayor a 0")
+    @Positive(message = "{servicio.precio.positive}")
     private Double precio;
     
-    @Positive(message = "La duración debe ser mayor a 0")
+    @Positive(message = "{servicio.duracion.positive}")
     private Integer duracion;
 
 }
